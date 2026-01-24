@@ -20,7 +20,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "pnpm publish --access public"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
