@@ -1,4 +1,4 @@
-import React, {RefObject, useEffect, useRef, useState} from "react";
+import React, {type RefObject, useEffect, useRef, useState} from "react";
 import classNames from "classnames";
 import throttle from 'lodash/throttle';
 import clamp from "lodash/clamp";

@@ -1,10 +1,8 @@
 import './App.css'
 import "./lib/ui/JustLayoutView.css"
 import JustLayoutView from "./lib/ui/JustLayoutView.tsx";
-import type {JustBranch, JustId, JustNode, JustStack} from "./lib/justLayout.types.ts";
+import type {JustId, JustNode} from "./lib/justLayout.types.ts";
 import type {WinInfo} from "./lib";
-import {JSX} from "react";
-import TabMenu from "./TabMenu.tsx";
 import TabTitle from "./TabTitle.tsx";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleQuestion} from "@fortawesome/free-solid-svg-icons";

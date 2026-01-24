@@ -3,7 +3,7 @@ import type {JustBranch, JustId, JustNode, NodeInfo, JustSplitDirection, JustSta
 import type {JustPayloadMoveWinSplit, JustPayloadMoveWinStack } from "./justLayout.store";
 import {clamp, get, set} from "lodash";
 import { JustUtil } from "./justUtil.ts";
-import update, {Spec } from "immutability-helper";
+import update, {type Spec} from "immutability-helper";
 
 export type JustUpdateSpec = Spec<JustNode>;
 
@@ -442,7 +442,7 @@ export class JustLayoutService {
 
   updateNode = (layout: JustNode | null, updateSpec: JustUpdateSpec): JustNode | null => {
     if (layout == null) return null;
-    return update<JustNode | null>(layout, updateSpec)
+    return update<JustNode>(layout, updateSpec)
   }
 
   buildSpecFromUpdateSpec = (branch: JustBranch, updateSpec: JustUpdateSpec): JustUpdateSpec => {

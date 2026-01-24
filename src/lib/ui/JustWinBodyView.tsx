@@ -26,7 +26,7 @@ function JustWinBodyView (props: Props) {
   const justLayoutStore = useJustLayoutStore(layoutId);
 
 
-  const onDrop = (itemType: any, item: JustDragItem) => {
+  const onDrop = (_itemType: any, item: JustDragItem) => {
     if (!item.pos) return;
     if (item.pos === 'stack') {
       justLayoutStore.moveWin({

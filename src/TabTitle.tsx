@@ -2,7 +2,7 @@ import {observer} from "mobx-react-lite";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark, faClone, faExpand} from "@fortawesome/free-solid-svg-icons";
 import {ControlledMenu, MenuItem, useMenuState} from "@szhsin/react-menu";
-import React, {JSX, useState} from "react";
+import React, {useState} from "react";
 import type {JustBranch, JustId} from "./lib/justLayout.types.ts";
 import type {WinInfo} from "./lib";
 import {useJustLayoutStore} from "./lib/useJustLayoutStore.ts";
@@ -16,9 +16,9 @@ interface Props extends React.Attributes {
   winInfo: WinInfo
 }
 
-function TabTitle({layoutId, justId, justBranch, isFullScreenView, winInfo, tabIcon}: Props) {
+function TabTitle({layoutId, justId, justBranch, isFullScreenView, winInfo}: Props) {
   const [menuProps, toggleMenu] = useMenuState();
-  const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
+  const [anchorPoint, ] = useState({ x: 0, y: 0 });
   const justLayoutStore = useJustLayoutStore(layoutId);
   const tabTitleTooltip = justLayoutStore.getTabTitleTooltip(justId)
 
@@ -31,9 +31,6 @@ function TabTitle({layoutId, justId, justBranch, isFullScreenView, winInfo, tabI
     justLayoutStore.activeWin({
       justId
     })
-  }
-  const doubleClickTitle = (_e: React.MouseEvent, _justId: JustId) => {
-    // justLayoutStore.toggleWin({nodeName: SIDE_MENU_NODE_NAME})
   }
   const cloneWin = (justId: JustId) => {
     const cloneJustId = JustUtil.replaceDup(justId)

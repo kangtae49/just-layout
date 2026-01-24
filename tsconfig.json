@@ -3,14 +3,5 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ],
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "allowImportingTsExtensions": true,
-    "experimentalDecorators": true,
-    "target": "ESNext",
-    "lib": ["es6", "dom", "ESNext"]
-  }
+  ]
 }

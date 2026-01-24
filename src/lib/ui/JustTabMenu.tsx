@@ -2,7 +2,6 @@ import {observer} from "mobx-react-lite";
 import {MenuItem} from "@szhsin/react-menu";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faExpand} from "@fortawesome/free-solid-svg-icons";
-import React from "react";
 import type {JustBranch, JustStack} from "../justLayout.types.ts";
 import {useJustLayoutStore} from "../useJustLayoutStore.ts";
 

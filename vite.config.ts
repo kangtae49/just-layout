@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc';
 import dts from 'vite-plugin-dts';
 import {resolve} from "path";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+
 
 // https://vite.dev/config/
 
@@ -19,16 +21,6 @@ export default defineConfig({
       include: ['src/lib'],
     })
   ],
-  compileOptions: {
-    experimentalDecorators: true,
-  },
-  esbuild: {
-    tsconfigRaw: {
-      compilerOptions: {
-        experimentalDecorators: true,
-      }
-    }
-  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/lib/index.ts'),

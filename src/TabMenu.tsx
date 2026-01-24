@@ -2,8 +2,7 @@ import {observer} from "mobx-react-lite";
 import {MenuItem} from "@szhsin/react-menu";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faExpand} from "@fortawesome/free-solid-svg-icons";
-import React from "react";
-import type {JustBranch, JustId, JustStack} from "./lib/justLayout.types.ts";
+import type {JustBranch, JustStack} from "./lib/justLayout.types.ts";
 import {useJustLayoutStore} from "./lib/useJustLayoutStore.ts";
 
 interface Prop {
