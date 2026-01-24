@@ -19,6 +19,8 @@ export default defineConfig({
       tsDecorators: true,
     }),
     dts({
+      tsconfigPath: './tsconfig.app.json',
+      rollupTypes: true,
       insertTypesEntry: true,
       include: ['src/lib'],
     })
