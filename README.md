@@ -97,3 +97,7 @@ PS C:\sources>
 pnpm add -P react react-dom
 pnpm add -D vite-plugin-dts
 ```
+
+```shell
+pnpm publish --access public
+```
