@@ -23,7 +23,9 @@ function JustTabTitle({layoutId, justId, winInfo}: Props) {
   const tabTitleTooltip = justLayoutStore.getTabTitleTooltip(justId)
 
   const clickClose = (justId: JustId) => {
-    console.log('closeWin!!!', justId)
+    justLayoutStore.removeWin({
+      justId
+    })
   }
   const clickTitle = (_e: React.MouseEvent, justId: JustId) => {
     justLayoutStore.activeWin({
