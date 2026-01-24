@@ -299,8 +299,10 @@ export class JustLayoutService {
     if( layout === null) return null
     if (layout.type === 'stack') {
       if (JustUtil.includes(layout.tabs, justId)) {
+        console.log('includes ok:', layout.tabs, justId)
         return layout
       } else {
+        console.log('includes nok:', layout.tabs, justId)
         return null
       }
     } else {
