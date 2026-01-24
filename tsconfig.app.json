@@ -33,6 +33,10 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/lib/**/*.ts", "src/lib/**/*.tsx"]
 }
