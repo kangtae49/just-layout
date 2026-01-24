@@ -1,6 +1,6 @@
 import type {JustBranch, JustId, JustStack} from "./justLayout.types.ts";
 import React from "react";
-
+import './ui/JustLayoutView.css';
 
 export interface WinInfo {
   getTabTitle?: GetTabTitleFn

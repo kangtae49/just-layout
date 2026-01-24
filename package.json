@@ -3,6 +3,19 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+
+  "files": ["dist"],
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./style.css": "./dist/just-layout.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
