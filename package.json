@@ -1,7 +1,7 @@
 {
   "name": "@kangtae49/just-layout",
   "private": false,
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
 
   "files": ["dist"],
@@ -23,6 +23,10 @@
     "preview": "vite preview",
     "release": "pnpm publish --access public"
   },
+  "peerDependencies": {
+    "mobx": "^6.15.0",
+    "mobx-react-lite": "^4.1.1"
+  },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
@@ -31,7 +35,6 @@
     "immutability-helper": "^3.1.1",
     "inversify": "^7.11.0",
     "lodash": "^4.17.23",
-    "mobx-react-lite": "^4.1.1",
     "react": "^19.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
