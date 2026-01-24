@@ -10,15 +10,15 @@ export * from "./justLayout.types.ts";
 export * from "./justUtil.ts";
 export * from "./useJustLayoutStore.ts";
 export * from "./ui/JustLayoutView.css";
-export {default as JustDraggableTitle} from "./ui/JustDraggableTitle.tsx";
-export {default as JustLayoutView} from "./ui/JustLayoutView.tsx";
-export {default as JustNodeView} from "./ui/JustNodeView.tsx";
-export {default as JustSplitter} from "./ui/JustSplitter.tsx";
-export {default as JustTabMenu} from "./ui/JustTabMenu.tsx";
-export {default as JustTabTitle} from "./ui/JustTabTitle.tsx";
-export {default as JustWinBodyView} from "./ui/JustWinBodyView.tsx";
-export {default as JustWinTitleView} from "./ui/JustWinTitleView.tsx";
-export {default as JustWinView} from "./ui/JustWinView.tsx";
+export {default as JustDraggableTitle} from "./ui/JustDraggableTitle";
+export {default as JustLayoutView} from "./ui/JustLayoutView";
+export {default as JustNodeView} from "./ui/JustNodeView";
+export {default as JustSplitter} from "./ui/JustSplitter";
+export {default as JustTabMenu} from "./ui/JustTabMenu";
+export {default as JustTabTitle} from "./ui/JustTabTitle";
+export {default as JustWinBodyView} from "./ui/JustWinBodyView";
+export {default as JustWinTitleView} from "./ui/JustWinTitleView";
+export {default as JustWinView} from "./ui/JustWinView";
 
 
 export interface WinInfo {
