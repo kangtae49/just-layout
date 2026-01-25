@@ -1,11 +1,7 @@
-import {ContainerModule, type Factory, ResolutionContext} from "inversify";
+import {ContainerModule, type Factory, type ResolutionContext} from "inversify";
 import { JUST_LAYOUT_TYPES } from "./justLayout.constants.ts";
 import { JustLayoutService } from "./justLayout.service";
 import { JustLayoutStore } from "./justLayout.store";
-import {container, storeLayout} from "./inversify.config.ts";
-
-// const storeCache = new Map<string, JustLayoutStore>();
-
 
 export const justLayoutModule = new ContainerModule(({bind}) => {
 
@@ -20,7 +16,6 @@ export const justLayoutModule = new ContainerModule(({bind}) => {
       return (id: string) => {
         if (!cacheMap.has(id)) {
           const newStore = context.get<JustLayoutStore>(JUST_LAYOUT_TYPES.JustLayoutStore)
-          // const newStore = container.get<JustLayoutStore>(JUST_LAYOUT_TYPES.JustLayoutStore);
           cacheMap.set(id, newStore);
         }
         return cacheMap.get(id)!;
