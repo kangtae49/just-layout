@@ -1,5 +1,3 @@
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
 import JustNodeView from "./JustNodeView.tsx";
 import classNames from "classnames";
 import type {GetTabMenuFn, GetWinInfoFn} from "@/lib";
