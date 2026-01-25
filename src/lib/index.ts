@@ -9,7 +9,7 @@ export * from "./justLayout.store.ts";
 export * from "./justLayout.types.ts";
 export * from "./justUtil.ts";
 export * from "./useJustLayoutStore.ts";
-export {default as JustDraggableTitle, JustDragItem} from "./ui/JustDraggableTitle";
+export {default as JustDraggableTitle} from "./ui/JustDraggableTitle";
 export {default as JustLayoutView} from "./ui/JustLayoutView";
 export {default as JustNodeView} from "./ui/JustNodeView";
 export {default as JustSplitter} from "./ui/JustSplitter";
@@ -18,7 +18,7 @@ export {default as JustTabTitle} from "./ui/JustTabTitle";
 export {default as JustWinBodyView} from "./ui/JustWinBodyView";
 export {default as JustWinTitleView} from "./ui/JustWinTitleView";
 export {default as JustWinView} from "./ui/JustWinView";
-
+export type {JustDragItem} from "./ui/JustDraggableTitle.tsx"
 
 export interface WinInfo {
   getTabTitle?: GetTabTitleFn
