@@ -107,7 +107,7 @@ function JustLayoutView ({layoutId, getWinInfo, getTabMenu, initialValue}: Props
   }, [justLayoutStore.fullScreenHideTitle])
 
   return (
-    <DndProvider backend={ HTML5Backend }>
+
       <div className={classNames(
         "just-layout",
         // "thema-dark"
@@ -137,7 +137,7 @@ function JustLayoutView ({layoutId, getWinInfo, getTabMenu, initialValue}: Props
           />
         }
       </div>
-    </DndProvider>
+
   )
 }
 
