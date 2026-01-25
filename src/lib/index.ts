@@ -32,6 +32,12 @@ export interface TabTitleProps {
   justBranch: JustBranch
   isFullScreenView: boolean
   winInfo: WinInfo
+  menuProps: {
+    state?: "opening" | "open" | "closing" | "closed"
+    endTransition: () => void
+  }
+  toggleMenu: (open: boolean) => void
+  anchorPoint: { x: number; y: number }
 }
 
 

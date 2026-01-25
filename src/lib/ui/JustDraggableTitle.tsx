@@ -37,11 +37,10 @@ function JustDraggableTitle(props: Props) {
     rect: parentRect
   } = props;
   const ref = useRef<HTMLDivElement | null>(null)
-  const [, toggleMenu] = useMenuState();
-  const [, setAnchorPoint] = useState({ x: 0, y: 0 });
+  const [menuProps, toggleMenu] = useMenuState();
+  const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
 
   const justLayoutStore = useJustLayoutStore(layoutId);
-
 
 
   const [{ isDragging }, drag] = useDrag({
@@ -135,8 +134,11 @@ function JustDraggableTitle(props: Props) {
     >
       {
         winInfo.getTabTitle ?
-          winInfo.getTabTitle({justId, layoutId, justBranch, isFullScreenView, winInfo}) :
-          <JustTabTitle justId={justId} layoutId={layoutId} justBranch={justBranch} isFullScreenView={isFullScreenView} winInfo={winInfo} />
+          winInfo.getTabTitle({justId, layoutId, justBranch, isFullScreenView, winInfo, menuProps, toggleMenu, anchorPoint}) :
+          <JustTabTitle
+            justId={justId} layoutId={layoutId} justBranch={justBranch}
+            isFullScreenView={isFullScreenView} winInfo={winInfo}
+            menuProps={menuProps} toggleMenu={toggleMenu} anchorPoint={anchorPoint} />
       }
     </div>
   )

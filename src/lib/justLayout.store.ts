@@ -403,12 +403,10 @@ export class JustLayoutStore {
 
   openWinByNodeName = ({justId, nodeName}: PayloadOpenWinByNodeName) => {
     if (this.service.hasWinId(this.layout ?? null, justId)) {
-      console.log('hasWinId', justId)
       this.activeWin({
         justId
       })
     } else {
-      console.log('addTabByNodeName', justId)
       this.addTabByNodeName({
         justId: justId,
         nodeName

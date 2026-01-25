@@ -1,8 +1,8 @@
 import {observer} from "mobx-react-lite";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons";
-import {ControlledMenu, MenuItem, useMenuState} from "@szhsin/react-menu";
-import React, {useState} from "react";
+import {ControlledMenu, MenuItem} from "@szhsin/react-menu";
+import React from "react";
 import type {JustBranch, JustId} from "@/lib";
 import type {WinInfo} from "@/lib";
 import {useJustLayoutStore} from "@/lib";
@@ -13,12 +13,16 @@ interface Props extends React.Attributes {
   justBranch: JustBranch
   isFullScreenView: boolean
   winInfo: WinInfo
+  menuProps: {
+    state?: "opening" | "open" | "closing" | "closed"
+    endTransition: () => void
+  }
+  toggleMenu: (open: boolean) => void
+  anchorPoint: { x: number; y: number }
 }
 
-function JustTabTitle({layoutId, justId, winInfo}: Props) {
+function JustTabTitle({layoutId, justId, winInfo, menuProps, toggleMenu, anchorPoint}: Props) {
   console.log('TabTitle justId', justId)
-  const [menuProps, toggleMenu] = useMenuState();
-  const [anchorPoint, ] = useState({ x: 0, y: 0 });
   const justLayoutStore = useJustLayoutStore(layoutId);
   const tabTitleTooltip = justLayoutStore.getTabTitleTooltip(justId)
 

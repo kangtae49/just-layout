@@ -1,7 +1,7 @@
 import './App.css'
 import "./lib/ui/JustLayoutView.css"
 import JustLayoutView from "./lib/ui/JustLayoutView.tsx";
-import type {JustId, JustNode} from "./lib";
+import type {JustId, JustNode, TabTitleProps} from "./lib";
 import type {WinInfo} from "./lib";
 import TabTitle from "./TabTitle.tsx";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
@@ -49,13 +49,9 @@ const initialValue: JustNode = {
 
 export const viewMap: Record<ViewId, WinInfo> = {
   "about": {
-    getTabTitle: ({justId, layoutId, justBranch, isFullScreenView, winInfo}) => (
+    getTabTitle: (props: TabTitleProps) => (
       <TabTitle
-        justId={justId}
-        layoutId={layoutId}
-        justBranch={justBranch}
-        isFullScreenView={isFullScreenView}
-        winInfo={winInfo}
+        {...props}
       />
     ),
     getTabIcon: () => <Icon icon={faCircleQuestion} />,
