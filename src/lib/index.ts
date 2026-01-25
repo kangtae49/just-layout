@@ -9,7 +9,7 @@ export * from "./justLayout.store.ts";
 export * from "./justLayout.types.ts";
 export * from "./justUtil.ts";
 export * from "./useJustLayoutStore.ts";
-export {default as JustDraggableTitle} from "./ui/JustDraggableTitle";
+export {default as JustDraggableTitle, JustDragItem} from "./ui/JustDraggableTitle";
 export {default as JustLayoutView} from "./ui/JustLayoutView";
 export {default as JustNodeView} from "./ui/JustNodeView";
 export {default as JustSplitter} from "./ui/JustSplitter";
