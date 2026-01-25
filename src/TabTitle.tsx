@@ -1,8 +1,7 @@
-import {useState} from "react";
 import {observer} from "mobx-react-lite";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark, faClone, faExpand} from "@fortawesome/free-solid-svg-icons";
-import {ControlledMenu, MenuItem, MenuState, useMenuState} from "@szhsin/react-menu";
+import {ControlledMenu, MenuItem, MenuState} from "@szhsin/react-menu";
 import type {JustBranch, JustId} from "./lib";
 import type {WinInfo} from "./lib";
 import {useJustLayoutStore} from "./lib";
