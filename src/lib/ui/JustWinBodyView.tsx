@@ -1,7 +1,7 @@
 
 import {type DropTargetMonitor, useDrop, type XYCoord} from "react-dnd";
 import classNames from 'classnames';
-import {type JustDragItem} from "./JustDraggableTitle.tsx";
+import {type JustDragItem} from "@/lib";
 import type {GetWinInfoFn} from "..";
 import type {JustBranch, JustStack} from "@/lib";
 import React, {Activity, useLayoutEffect, useRef, useState} from "react";

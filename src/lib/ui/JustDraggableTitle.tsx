@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from "react";
 import {type DragSourceMonitor, useDrag, useDrop} from "react-dnd";
 import type { XYCoord } from 'react-dnd';
-import type {JustBranch, JustDirection, JustId, JustPos, JustStack} from "../justLayout.types.ts";
+import type {JustBranch, JustDirection, JustId, JustPos, JustStack} from "@/lib";
 import type {WinInfo} from "@/lib";
 import classNames from "classnames";
 import {useMenuState} from "@szhsin/react-menu";
