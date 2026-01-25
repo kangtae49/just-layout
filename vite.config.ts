@@ -33,7 +33,7 @@ export default defineConfig({
       formats: ['es', 'umd'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'inversify', 'inversify-react', 'reflect-metadata', 'mobx'],
       output: {
         globals: {
           react: 'React',
@@ -42,5 +42,9 @@ export default defineConfig({
         },
       },
     },
+  },
+  resolve: {
+    dedupe: ['react', 'react-dom', 'react/jsx-runtime', 'inversify', 'inversify-react', 'reflect-metadata', 'mobx'],
+    preserveSymlinks: true
   }
 })

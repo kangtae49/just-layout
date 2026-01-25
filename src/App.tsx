@@ -7,6 +7,8 @@ import TabTitle from "./TabTitle.tsx";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleQuestion} from "@fortawesome/free-solid-svg-icons";
 import {useJustLayoutStore} from "./lib";
+import {Provider} from "inversify-react";
+import {container} from "./inversify.config";
 
 
 export type ViewId = "about"
@@ -115,17 +117,20 @@ function App() {
   //
   // }, [justLayoutFullScreenStore.layout])
   return (
-    <div style={{width: "100%", height: "100%"}}>
-      <div onClick={openWin}>
-        xx
+
+
+      <div style={{width: "100%", height: "100%"}}>
+        <div onClick={openWin}>
+          xx
+        </div>
+        <JustLayoutView
+          layoutId={layoutId}
+          initialValue={initialValue}
+          getWinInfo={getWinInfo}
+          // getTabMenu={getTabMenu}
+        />
       </div>
-      <JustLayoutView
-        layoutId={layoutId}
-        initialValue={initialValue}
-        getWinInfo={getWinInfo}
-        // getTabMenu={getTabMenu}
-      />
-    </div>
+    // </Provider>
   )
 }
 
