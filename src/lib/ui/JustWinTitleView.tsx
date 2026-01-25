@@ -7,10 +7,10 @@ import {faEllipsisVertical, faAngleDown, faCircleXmark} from "@fortawesome/free-
 import JustDraggableTitle, {type JustDragItem} from "./JustDraggableTitle";
 import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import {Menu, MenuItem} from "@szhsin/react-menu";
-import type {GetTabMenuFn, GetWinInfoFn} from "../index.ts";
-import type {JustBranch, JustId, JustStack} from "../justLayout.types.ts";
-import {JustUtil} from "../justUtil.ts";
-import {useJustLayoutStore} from "../useJustLayoutStore.ts";
+import type {GetTabMenuFn, GetWinInfoFn} from "@/lib";
+import type {JustBranch, JustId, JustStack} from "@/lib";
+import {JustUtil} from "@/lib";
+import {useJustLayoutStore} from "@/lib";
 import {observer} from "mobx-react-lite";
 import JustTabMenu from "./JustTabMenu.tsx";
 

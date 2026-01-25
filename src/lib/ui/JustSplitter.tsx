@@ -7,7 +7,7 @@ import type {
   JustSplit,
   JustSplitDirection,
   JustSplitType
-} from "../justLayout.types.ts";
+} from "@/lib";
 import {observer} from "mobx-react-lite";
 
 const RESIZE_THROTTLE_MS = 1000 / 30; // 30 fps

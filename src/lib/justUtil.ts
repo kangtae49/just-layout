@@ -3,9 +3,6 @@ import type {JustId} from "./justLayout.types.ts";
 import {stableStringify} from "./json-util.ts";
 import { isEqual } from "lodash";
 
-
-
-
 export class JustUtil {
 
   static toString(justId: JustId): string {

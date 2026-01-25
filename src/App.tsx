@@ -1,14 +1,12 @@
 import './App.css'
 import "./lib/ui/JustLayoutView.css"
 import JustLayoutView from "./lib/ui/JustLayoutView.tsx";
-import type {JustId, JustNode} from "./lib/justLayout.types.ts";
+import type {JustId, JustNode} from "./lib";
 import type {WinInfo} from "./lib";
 import TabTitle from "./TabTitle.tsx";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleQuestion} from "@fortawesome/free-solid-svg-icons";
 import {useJustLayoutStore} from "./lib";
-import {Provider} from "inversify-react";
-import {container} from "./inversify.config";
 
 
 export type ViewId = "about"

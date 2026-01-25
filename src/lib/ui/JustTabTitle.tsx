@@ -3,9 +3,9 @@ import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons";
 import {ControlledMenu, MenuItem, useMenuState} from "@szhsin/react-menu";
 import React, {useState} from "react";
-import type {JustBranch, JustId} from "../justLayout.types.ts";
-import type {WinInfo} from "../index.ts";
-import {useJustLayoutStore} from "../useJustLayoutStore.ts";
+import type {JustBranch, JustId} from "@/lib";
+import type {WinInfo} from "@/lib";
+import {useJustLayoutStore} from "@/lib";
 
 interface Props extends React.Attributes {
   justId: JustId

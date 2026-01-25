@@ -3,10 +3,10 @@ import {type DropTargetMonitor, useDrop, type XYCoord} from "react-dnd";
 import classNames from 'classnames';
 import {type JustDragItem} from "./JustDraggableTitle.tsx";
 import type {GetWinInfoFn} from "..";
-import type {JustBranch, JustStack} from "../justLayout.types.ts";
+import type {JustBranch, JustStack} from "@/lib";
 import React, {Activity, useLayoutEffect, useRef, useState} from "react";
-import {JustUtil} from "../justUtil.ts";
-import {useJustLayoutStore} from "../useJustLayoutStore.ts";
+import {JustUtil} from "@/lib";
+import {useJustLayoutStore} from "@/lib";
 import {observer} from "mobx-react-lite";
 
 interface Props extends React.Attributes {

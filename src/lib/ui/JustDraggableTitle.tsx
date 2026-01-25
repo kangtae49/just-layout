@@ -2,11 +2,11 @@ import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from "
 import {type DragSourceMonitor, useDrag, useDrop} from "react-dnd";
 import type { XYCoord } from 'react-dnd';
 import type {JustBranch, JustDirection, JustId, JustPos, JustStack} from "../justLayout.types.ts";
-import type {WinInfo} from "../index.ts";
+import type {WinInfo} from "@/lib";
 import classNames from "classnames";
 import {useMenuState} from "@szhsin/react-menu";
-import {JustUtil} from "../justUtil.ts";
-import {useJustLayoutStore} from "../useJustLayoutStore.ts";
+import {JustUtil} from "@/lib";
+import {useJustLayoutStore} from "@/lib";
 import {observer} from "mobx-react-lite";
 import JustTabTitle from "./JustTabTitle.tsx";
 

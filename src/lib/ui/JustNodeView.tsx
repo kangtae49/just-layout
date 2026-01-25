@@ -3,9 +3,9 @@ import classNames from "classnames";
 import * as React from "react";
 import JustSplitter, {type SplitSize} from "./JustSplitter.tsx";
 import {Activity, type CSSProperties, useRef} from "react";
-import type {GetTabMenuFn, GetWinInfoFn} from "../index.ts";
-import type {JustBranch, JustNode, JustSplit, JustSplitDirection} from "../justLayout.types.ts";
-import {useJustLayoutStore} from "../useJustLayoutStore.ts";
+import type {GetTabMenuFn, GetWinInfoFn} from "@/lib";
+import type {JustBranch, JustNode, JustSplit, JustSplitDirection} from "@/lib";
+import {useJustLayoutStore} from "@/lib";
 import {observer} from "mobx-react-lite";
 
 interface Props extends React.Attributes {

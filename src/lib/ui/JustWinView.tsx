@@ -1,8 +1,8 @@
 import JustWinTitleView from "./JustWinTitleView.tsx";
 import JustWinBodyView from "./JustWinBodyView.tsx";
-import type {GetTabMenuFn, GetWinInfoFn} from "../index.ts";
-import type {JustBranch, JustStack} from "../justLayout.types.ts";
-import {useJustLayoutStore} from "../useJustLayoutStore.ts";
+import type {GetTabMenuFn, GetWinInfoFn} from "@/lib";
+import type {JustBranch, JustStack} from "@/lib";
+import {useJustLayoutStore} from "@/lib";
 import {observer} from "mobx-react-lite";
 import React from "react";
 

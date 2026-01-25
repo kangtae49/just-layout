@@ -36,8 +36,11 @@ export default defineConfig({
       external: ['react', 'react-dom', 'react/jsx-runtime', 'inversify', 'inversify-react', 'reflect-metadata', 'mobx'],
       output: {
         globals: {
-          react: 'React',
+          'react': 'React',
           'react-dom': 'ReactDOM',
+          'mobx': 'mobx',
+          'inversify': 'inversify',
+          'inversify-react': 'inversifyReact',
           'react/jsx-runtime': 'jsxRuntime',
         },
       },
@@ -45,6 +48,9 @@ export default defineConfig({
   },
   resolve: {
     dedupe: ['react', 'react-dom', 'react/jsx-runtime', 'inversify', 'inversify-react', 'reflect-metadata', 'mobx'],
-    preserveSymlinks: true
+    preserveSymlinks: true,
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    }
   }
 })

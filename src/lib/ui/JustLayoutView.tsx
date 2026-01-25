@@ -2,9 +2,9 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import JustNodeView from "./JustNodeView.tsx";
 import classNames from "classnames";
-import type {GetTabMenuFn, GetWinInfoFn} from "../index.ts";
-import type {JustNode} from "../justLayout.types.ts";
-import {useJustLayoutStore} from "../useJustLayoutStore.ts";
+import type {GetTabMenuFn, GetWinInfoFn} from "@/lib";
+import type {JustNode} from "@/lib";
+import {useJustLayoutStore} from "@/lib";
 import {observer} from "mobx-react-lite";
 import React, {useEffect} from "react";
 
