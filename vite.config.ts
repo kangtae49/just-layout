@@ -33,7 +33,12 @@ export default defineConfig({
       formats: ['es', 'umd'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'inversify', 'inversify-react', 'reflect-metadata', 'mobx'],
+      external: [
+        'react', 'react-dom',
+        'react/jsx-runtime',
+        'inversify', 'inversify-react', 'reflect-metadata', 'mobx',
+        'react-dnd', 'react-dnd-html5-backend',
+      ],
       output: {
         globals: {
           'react': 'React',
@@ -42,6 +47,8 @@ export default defineConfig({
           'inversify': 'inversify',
           'inversify-react': 'inversifyReact',
           'react/jsx-runtime': 'jsxRuntime',
+          'react-dnd': 'ReactDnd',
+          'react-dnd-html5-backend': 'ReactDndHtml5Backend',
         },
       },
     },
