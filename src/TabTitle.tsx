@@ -1,12 +1,12 @@
 import {observer} from "mobx-react-lite";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark, faClone, faExpand} from "@fortawesome/free-solid-svg-icons";
-import {ControlledMenu, MenuItem, MenuState} from "@szhsin/react-menu";
+import {ControlledMenu, MenuItem, type MenuState} from "@szhsin/react-menu";
 import type {JustBranch, JustId} from "./lib";
 import type {WinInfo} from "./lib";
 import {useJustLayoutStore} from "./lib";
 import {JustUtil} from "./lib";
-import {Attributes} from "react";
+import type {Attributes} from "react";
 
 interface Props extends Attributes {
   justId: JustId

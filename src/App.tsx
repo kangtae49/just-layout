@@ -1,6 +1,6 @@
 import './App.css'
 import "./lib/ui/JustLayoutView.css"
-import {JustId, JustLayoutView, JustNode, TabTitleProps} from "./lib";
+import {type JustId, JustLayoutView, type JustNode, JustUtil, type TabTitleProps} from "./lib";
 import type {WinInfo} from "./lib";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleQuestion} from "@fortawesome/free-solid-svg-icons";
@@ -48,7 +48,7 @@ const initialValue: JustNode = {
 //   dndAccept: ["about"],
 // }
 
-export const viewMap: Record<ViewId, WinInfo> = {
+const viewMap: Record<ViewId, WinInfo> = {
   "about": {
     getTabTitle: (props: TabTitleProps) => (
       <TabTitle
@@ -101,15 +101,22 @@ function App() {
     console.log('isHide', isHide)
     justLayoutStore.openWin({justId: aboutId2})
 
-    const tabs = justLayoutStore.getWinIdsByBranch({branch})
-    console.log('tabs', toJS(tabs))
+    if (branch !== null) {
+      const tabs = justLayoutStore.getWinIdsByBranch({branch})
+      console.log('tabs', toJS(tabs))
 
-    const node = justLayoutStore.getNodeAtBranch({branch})
-    console.log('node', toJS(node))
+      const node = justLayoutStore.getNodeAtBranch({branch})
+      console.log('node', toJS(node))
+    }
 
     justLayoutStore.openWinMenu({justId: aboutId2, nodeName: SIDE_MENU_NODE_NAME})
 
-
+    const title = JustUtil.getParamString({ viewId: "about", title: "About2", params: {title: 'hello'}}, 'title')
+    console.log('title', title)
+    const title2 = JustUtil.getParam<string>({ viewId: "about", title: "About2", params: {title: 'hello'}}, 'title')
+    console.log('title2', title2)
+    const xx = JustUtil.withoutDup({viewId: "about", title: "About2", dupId: "xx"})
+    console.log('xx', xx)
   }, [])
 
   // const justLayoutFullScreenStore = useJustLayoutStore(layoutFullScreenId)
