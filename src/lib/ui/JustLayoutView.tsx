@@ -15,7 +15,7 @@ interface Props extends React.Attributes {
 }
 
 
-function JustLayoutView ({layoutId, getWinInfo, getTabMenu, initialValue}: Props) {
+const JustLayoutView =  observer(({layoutId, getWinInfo, getTabMenu, initialValue}: Props) => {
   // const {onLoad} = useOnload();
   const layoutFullScreenId = `${layoutId}_FULLSCREEN`
   const justLayoutStore = useJustLayoutStore(layoutId)
@@ -137,6 +137,6 @@ function JustLayoutView ({layoutId, getWinInfo, getTabMenu, initialValue}: Props
       </div>
 
   )
-}
+})
 
-export default observer(JustLayoutView)
+export default JustLayoutView

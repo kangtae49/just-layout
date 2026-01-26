@@ -1,19 +1,11 @@
 import {inject, injectable} from "inversify";
 import {JUST_LAYOUT_TYPES} from "./justLayout.constants.ts";
-import type {JustBranch, JustDirection, JustId, JustNode, JustPos} from "./justLayout.types.ts";
+import type {JustBranch, JustDirection, JustId, JustNode} from "./justLayout.types.ts";
 import {JustLayoutService} from "./justLayout.service";
 import {makeAutoObservable} from "mobx";
 import {JustUtil} from "./justUtil.ts";
 
 
-export interface JustPayloadInsert {
-  branch: JustBranch
-  justId: JustId
-  direction: JustDirection
-  pos: JustPos
-  index: number
-  size?: number
-}
 export interface JustPayloadAddTab {
   justId: JustId
 }
@@ -77,9 +69,6 @@ interface PayloadGetWinIds {
   viewId: string
 }
 
-interface PayloadGetDupWinIds{
-  justId: JustId
-}
 
 interface PayloadGetWinIdsByBranch {
   branch: JustBranch
@@ -232,7 +221,7 @@ export class JustLayoutStore {
       this.layout,
       payload.justId
     )
-    this.lastActiveId = payload.justId as JustId | null | any
+    this.lastActiveId = payload.justId as JustId | null
     this.lastActiveTm = new Date().getTime()
   }
 
@@ -294,23 +283,23 @@ export class JustLayoutStore {
         payload
       ))
     }
-    this.lastActiveId = payload.justId as JustId | null | any
+    this.lastActiveId = payload.justId as JustId | null
     this.lastActiveTm = new Date().getTime()
   }
 
 
 
-  toggleSideMenu = () => {
-    if (this.layout === null) return;
-    if (this.layout.type !== 'split-pixels') {
-      return;
-    }
-    const newSize = this.layout.size <= 0 ? this.layout.primaryDefaultSize : 0;
-    this.updateResize({
-      branch: [],
-      size: newSize
-    })
-  }
+  // toggleSideMenu = () => {
+  //   if (this.layout === null) return;
+  //   if (this.layout.type !== 'split-pixels') {
+  //     return;
+  //   }
+  //   const newSize = this.layout.size <= 0 ? this.layout.primaryDefaultSize : 0;
+  //   this.updateResize({
+  //     branch: [],
+  //     size: newSize
+  //   })
+  // }
 
   toggleWin = ({nodeName}: PayloadToggleWin) => {
     const layout = this.layout;
@@ -418,9 +407,9 @@ export class JustLayoutStore {
     return this.service.queryWinIdsByViewId(this.layout ?? null, viewId, [])
   }
 
-  getDupWinIds = ({justId}: PayloadGetDupWinIds) => {
-    return this.service.queryDupWinIdsByWinId(this.layout ?? null, justId, [])
-  }
+  // getDupWinIds = ({justId}: PayloadGetDupWinIds) => {
+  //   return this.service.queryDupWinIdsByWinId(this.layout ?? null, justId, [])
+  // }
 
   getWinIdsByBranch = ({branch}: PayloadGetWinIdsByBranch) => {
     return this.service.queryWinIdsByStack(this.layout ?? null, branch)
@@ -447,7 +436,7 @@ export class JustLayoutStore {
     }
   }
 
-  fullScreenWin = async (justBranch: JustBranch, isFullScreenView: boolean, hideTitle: boolean = false) => {
+  fullScreenWin = (justBranch: JustBranch, isFullScreenView: boolean, hideTitle: boolean = false) => {
     // fullscreen
     if (isFullScreenView) {  // justLayoutFullScreenStore
       this.setLayout(null)  // restore
@@ -457,8 +446,6 @@ export class JustLayoutStore {
       this.setFullScreenHideTitle(hideTitle)
     }
   }
-
-
 
 
 }

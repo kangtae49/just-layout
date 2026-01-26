@@ -11,25 +11,16 @@ interface Prop {
   justStack: JustStack
   isFullScreenView: boolean
 }
-function JustTabMenu ({layoutId, justBranch, isFullScreenView }: Prop) {
+const JustTabMenu = observer(({layoutId, justBranch, isFullScreenView }: Prop) => {
   const justLayoutStore = useJustLayoutStore(layoutId);
   const closeAllTabs = () => {
-    console.log('closeAllTabs justBranch', justBranch)
-    // const winIds: JustId[] = justLayoutStore.getWinIdsByBranch({branch});
-
     justLayoutStore.removeAllTabs({
       branch: justBranch
     })
-
   }
 
-  const fullScreenWin = async (hideTitle: boolean = false) => {
-    if (isFullScreenView) {
-      justLayoutStore.setLayout(null)
-    } else {
-      justLayoutStore.setFullScreenLayoutByBranch(justBranch)
-      justLayoutStore.setFullScreenHideTitle(hideTitle)
-    }
+  const fullScreenWin = (hideTitle: boolean = false) => {
+    justLayoutStore.fullScreenWin(justBranch, isFullScreenView, hideTitle)
   }
 
   return (
@@ -52,6 +43,6 @@ function JustTabMenu ({layoutId, justBranch, isFullScreenView }: Prop) {
       </MenuItem>
     </>
   )
-}
+})
 
-export default observer(JustTabMenu)
+export default JustTabMenu

@@ -4,10 +4,10 @@ import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome"
 import {faEllipsisVertical, faAngleDown, faCircleXmark} from "@fortawesome/free-solid-svg-icons"
 
 
-import JustDraggableTitle, {type JustDragItem} from "./JustDraggableTitle";
+import JustDraggableTitle from "./JustDraggableTitle";
 import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import {Menu, MenuItem} from "@szhsin/react-menu";
-import type {GetTabMenuFn, GetWinInfoFn} from "@/lib";
+import type {GetTabMenuFn, GetWinInfoFn, JustDragItem} from "@/lib";
 import type {JustBranch, JustId, JustStack} from "@/lib";
 import {JustUtil} from "@/lib";
 import {useJustLayoutStore} from "@/lib";
@@ -25,7 +25,7 @@ interface Props extends React.Attributes {
   getTabMenu?: GetTabMenuFn
 }
 
-function JustWinTitleView ({layoutId, isFullScreenView, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) {
+const JustWinTitleView = observer(({layoutId, isFullScreenView, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) => {
   const ref = useRef<HTMLDivElement | null>(null)
   const [rect, setRect] = useState<DOMRect | null>(null)
 
@@ -214,6 +214,6 @@ function JustWinTitleView ({layoutId, isFullScreenView, dndAccept, justBranch, j
       </div>
     </div>
   )
-}
+})
 
-export default observer(JustWinTitleView)
+export default JustWinTitleView

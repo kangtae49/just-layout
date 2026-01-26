@@ -35,7 +35,7 @@ interface Props extends React.Attributes {
   onRelease?: (splitSize: SplitSize) => void;
 }
 
-function JustSplitter ({ node, containerRef, onChange, onRelease }: Props) {
+const JustSplitter = observer(({ node, containerRef, onChange, onRelease }: Props) => {
   const refSplit = useRef<HTMLDivElement | null>(null);
   const [listenersBound, setListenersBound] = useState(false);
 
@@ -65,7 +65,7 @@ function JustSplitter ({ node, containerRef, onChange, onRelease }: Props) {
 
   const onMouseUp = (event: MouseEvent) => {
     unbindListeners();
-    if (containerRef == undefined) return;
+    if (!containerRef) return;
 
     const splitSize = calculateSplitSize(event, node, containerRef)
     if (splitSize !== null){
@@ -75,7 +75,7 @@ function JustSplitter ({ node, containerRef, onChange, onRelease }: Props) {
 
   const onMouseMove = (event: MouseEvent) => {
     event.preventDefault();
-    if (containerRef == undefined) return;
+    if (!containerRef) return;
     throttledUpdatePercentage(event, node, containerRef);
   };
 
@@ -143,6 +143,6 @@ function JustSplitter ({ node, containerRef, onChange, onRelease }: Props) {
       onMouseDown={onMouseDown}
     />
   )
-}
+})
 
-export default observer(JustSplitter)
+export default JustSplitter

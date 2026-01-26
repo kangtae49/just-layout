@@ -1,12 +1,13 @@
 import './App.css'
 import "./lib/ui/JustLayoutView.css"
-import JustLayoutView from "./lib/ui/JustLayoutView.tsx";
-import type {JustId, JustNode, TabTitleProps} from "./lib";
+import {JustId, JustLayoutView, JustNode, TabTitleProps} from "./lib";
 import type {WinInfo} from "./lib";
-import TabTitle from "./TabTitle.tsx";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleQuestion} from "@fortawesome/free-solid-svg-icons";
 import {useJustLayoutStore} from "./lib";
+import {useEffect} from "react";
+import {toJS} from "mobx";
+import TabTitle from "./TabTitle";
 
 
 export type ViewId = "about"
@@ -82,6 +83,34 @@ function App() {
     console.log('openBoard', justId)
     justLayoutStore.openWinByNodeName({justId, nodeName: SIDE_MENU_NODE_NAME})
   }
+
+  useEffect(() => {
+    justLayoutStore.setTabTitle(aboutId2, "About !!!")
+    justLayoutStore.setTabTitleTooltip(aboutId2, "About Tooltip !!!")
+    const ids = justLayoutStore.queryWinIdsByViewId("about")
+    console.log('ids', toJS(ids))
+    justLayoutStore.toggleWin({nodeName: SIDE_MENU_NODE_NAME})
+    justLayoutStore.toggleWin({nodeName: SIDE_MENU_NODE_NAME})
+    justLayoutStore.showWin({nodeName: SIDE_MENU_NODE_NAME, show: true})
+    const size = justLayoutStore.getSizeByNodeName({nodeName: SIDE_MENU_NODE_NAME})
+    console.log('size', size)
+
+    const branch = justLayoutStore.getBranchByJustId({justId: aboutId2})
+    console.log('branch', toJS(branch))
+    const isHide = justLayoutStore.isPrimaryHide({nodeName: SIDE_MENU_NODE_NAME})
+    console.log('isHide', isHide)
+    justLayoutStore.openWin({justId: aboutId2})
+
+    const tabs = justLayoutStore.getWinIdsByBranch({branch})
+    console.log('tabs', toJS(tabs))
+
+    const node = justLayoutStore.getNodeAtBranch({branch})
+    console.log('node', toJS(node))
+
+    justLayoutStore.openWinMenu({justId: aboutId2, nodeName: SIDE_MENU_NODE_NAME})
+
+
+  }, [])
 
   // const justLayoutFullScreenStore = useJustLayoutStore(layoutFullScreenId)
   // useEffect(() => {

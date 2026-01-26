@@ -1,4 +1,5 @@
 import {JustLayoutStore} from "./justLayout.store.ts";
+import type {JSX} from "react";
 
 export type JustDirection = 'row' | 'column';
 export type JustSplitDirection = 'first' | 'second';
@@ -71,4 +72,38 @@ export type JustPos = JustSplitDirection | 'stack'
 
 export type JustLayoutFactory = (id: string) => JustLayoutStore;
 
+
+export interface WinInfo {
+  getTabTitle?: GetTabTitleFn
+  getTabIcon: GetTabIconFn
+  getView: GetViewFn
+}
+
+export interface TabTitleProps {
+  justId: JustId
+  layoutId: string
+  justBranch: JustBranch
+  isFullScreenView: boolean
+  winInfo: WinInfo
+  menuProps: {
+    state?: "opening" | "open" | "closing" | "closed"
+    endTransition: () => void
+  }
+  toggleMenu: (open: boolean) => void
+  anchorPoint: { x: number; y: number }
+}
+
+export interface JustDragItem {
+  justId: JustId
+  direction?: JustDirection
+  pos?: JustPos
+  index?: number
+}
+
+export type GetWinInfoFn = (justId: JustId) => WinInfo;
+export type GetTabTitleFn = ({justId, layoutId, justBranch, isFullScreenView, winInfo}: TabTitleProps) => JSX.Element;
+export type GetViewFn = (justId: JustId, layoutId: string) => JSX.Element;
+export type GetTabIconFn = (justId: JustId, layoutId: string) => JSX.Element;
+
+export type GetTabMenuFn = (layoutId: string, branch: JustBranch, justStack: JustStack, isFullScreenView: boolean) => JSX.Element;
 

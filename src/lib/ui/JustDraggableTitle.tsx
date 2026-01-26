@@ -1,20 +1,15 @@
 import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from "react";
 import {type DragSourceMonitor, useDrag, useDrop} from "react-dnd";
 import type { XYCoord } from 'react-dnd';
-import type {WinInfo} from "@/lib";
-import type {JustBranch, JustDirection, JustId, JustPos, JustStack} from "@/lib";
+import type {JustDragItem, WinInfo} from "@/lib";
+import type {JustBranch, JustId, JustStack} from "@/lib";
 import classNames from "classnames";
 import {useMenuState} from "@szhsin/react-menu";
 import {observer} from "mobx-react-lite";
 import JustTabTitle from "./JustTabTitle.tsx";
 import {JustUtil, useJustLayoutStore} from "@/lib";
 
-export interface JustDragItem {
-  justId: JustId
-  direction?: JustDirection
-  pos?: JustPos
-  index?: number
-}
+
 
 interface Props extends React.Attributes {
   layoutId: string
@@ -27,7 +22,7 @@ interface Props extends React.Attributes {
   rect: DOMRect | null
 }
 
-function JustDraggableTitle(props: Props) {
+const JustDraggableTitle = observer((props: Props) => {
   const {
     layoutId,
 
@@ -142,6 +137,6 @@ function JustDraggableTitle(props: Props) {
       }
     </div>
   )
-}
+})
 
-export default observer(JustDraggableTitle)
+export default JustDraggableTitle

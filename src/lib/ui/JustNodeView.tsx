@@ -19,7 +19,7 @@ interface Props extends React.Attributes {
   dndAccept: string[]
 }
 
-function JustNodeView ({layoutId, isFullScreenView, hideTitle, dndAccept, node, justBranch, getWinInfo, getTabMenu}: Props) {
+const JustNodeView = observer(({layoutId, isFullScreenView, hideTitle, dndAccept, node, justBranch, getWinInfo, getTabMenu}: Props) => {
   const refNode = useRef<HTMLDivElement | null>(null);
 
   const justLayoutStore = useJustLayoutStore(layoutId)
@@ -131,6 +131,6 @@ function JustNodeView ({layoutId, isFullScreenView, hideTitle, dndAccept, node, 
     </div>
   )
 
-}
+})
 
-export default observer(JustNodeView)
+export default JustNodeView

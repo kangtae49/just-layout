@@ -90,7 +90,7 @@ export class JustLayoutService {
   removeAllTabs = (layout: JustNode | null, branch: JustBranch): JustNode | null => {
     if (layout == null) return null;
     const justStack = this.getNodeByBranch(layout, branch);
-    if (justStack == null) return layout;
+    if (!justStack) return layout;
     if (justStack.type !== 'stack') return layout;
     return this.updateNodeOfBranch(layout, branch, {
       $set: {
@@ -299,10 +299,8 @@ export class JustLayoutService {
     if( layout === null) return null
     if (layout.type === 'stack') {
       if (JustUtil.includes(layout.tabs, justId)) {
-        console.log('includes ok:', layout.tabs, justId)
         return layout
       } else {
-        console.log('includes nok:', layout.tabs, justId)
         return null
       }
     } else {
@@ -390,22 +388,22 @@ export class JustLayoutService {
     }
   }
 
-  queryDupWinIdsByWinId = (layout: JustNode | null, justId: JustId, justIds: JustId []): JustId [] => {
-    if( layout === null) return justIds
-    if (layout.type === 'stack') {
-
-      const justIdWithoutDup = JustUtil.withoutDup(justId)
-
-      const ids = layout.tabs.filter((tab) => {
-        const tabWithoutDup = JustUtil.withoutDup(tab)
-        return JustUtil.isEquals(justIdWithoutDup, tabWithoutDup)
-      })
-      return [...justIds, ...ids]
-    } else {
-      const firstIds = this.queryDupWinIdsByWinId(layout.first, justId, justIds);
-      return this.queryDupWinIdsByWinId(layout.second, justId, [...justIds, ...firstIds]);
-    }
-  }
+  // queryDupWinIdsByWinId = (layout: JustNode | null, justId: JustId, justIds: JustId []): JustId [] => {
+  //   if( layout === null) return justIds
+  //   if (layout.type === 'stack') {
+  //
+  //     const justIdWithoutDup = JustUtil.withoutDup(justId)
+  //
+  //     const ids = layout.tabs.filter((tab) => {
+  //       const tabWithoutDup = JustUtil.withoutDup(tab)
+  //       return JustUtil.isEquals(justIdWithoutDup, tabWithoutDup)
+  //     })
+  //     return [...justIds, ...ids]
+  //   } else {
+  //     const firstIds = this.queryDupWinIdsByWinId(layout.first, justId, justIds);
+  //     return this.queryDupWinIdsByWinId(layout.second, justId, [...justIds, ...firstIds]);
+  //   }
+  // }
 
   queryWinIdsByStack = (layout: JustNode | null, branch: JustBranch): JustId [] => {
     if( layout === null) return []

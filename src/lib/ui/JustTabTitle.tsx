@@ -21,7 +21,7 @@ interface Props extends React.Attributes {
   anchorPoint: { x: number; y: number }
 }
 
-function JustTabTitle({layoutId, justId, winInfo, menuProps, toggleMenu, anchorPoint}: Props) {
+const JustTabTitle = observer(({layoutId, justId, winInfo, menuProps, toggleMenu, anchorPoint}: Props) => {
   console.log('TabTitle justId', justId)
   const justLayoutStore = useJustLayoutStore(layoutId);
   const tabTitleTooltip = justLayoutStore.getTabTitleTooltip(justId)
@@ -72,6 +72,6 @@ function JustTabTitle({layoutId, justId, winInfo, menuProps, toggleMenu, anchorP
       </ControlledMenu>
     </>
   )
-}
+})
 
-export default observer(JustTabTitle)
+export default JustTabTitle

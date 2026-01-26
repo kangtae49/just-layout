@@ -2,8 +2,8 @@ import {observer} from "mobx-react-lite";
 import {MenuItem} from "@szhsin/react-menu";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faExpand} from "@fortawesome/free-solid-svg-icons";
-import type {JustBranch, JustStack} from "./lib/justLayout.types.ts";
-import {useJustLayoutStore} from "./lib/useJustLayoutStore.ts";
+import type {JustBranch, JustStack} from "./lib";
+import {useJustLayoutStore} from "./lib";
 
 interface Prop {
   layoutId: string
@@ -11,7 +11,7 @@ interface Prop {
   justStack: JustStack
   isFullScreenView: boolean
 }
-function TabMenu ({layoutId, justBranch, isFullScreenView }: Prop) {
+const TabMenu = observer(({layoutId, justBranch, isFullScreenView }: Prop) => {
   const justLayoutStore = useJustLayoutStore(layoutId);
   const closeAllTabs = () => {
     console.log('closeAllTabs justBranch', justBranch)
@@ -23,13 +23,8 @@ function TabMenu ({layoutId, justBranch, isFullScreenView }: Prop) {
 
   }
 
-  const fullScreenWin = async (hideTitle: boolean = false) => {
-    if (isFullScreenView) {
-      justLayoutStore.setLayout(null)
-    } else {
-      justLayoutStore.setFullScreenLayoutByBranch(justBranch)
-      justLayoutStore.setFullScreenHideTitle(hideTitle)
-    }
+  const fullScreenWin = (hideTitle: boolean = false) => {
+    justLayoutStore.fullScreenWin(justBranch, isFullScreenView, hideTitle)
   }
 
   return (
@@ -52,6 +47,6 @@ function TabMenu ({layoutId, justBranch, isFullScreenView }: Prop) {
       </MenuItem>
     </>
   )
-}
+})
 
-export default observer(TabMenu)
+export default TabMenu

@@ -17,7 +17,7 @@ interface Props extends React.Attributes {
   getWinInfo: GetWinInfoFn
 }
 
-function JustWinBodyView (props: Props) {
+const JustWinBodyView = observer((props: Props) => {
   const ref = useRef<HTMLDivElement | null>(null)
 
   const { layoutId, dndAccept, getWinInfo, justBranch, justStack } = props;
@@ -135,6 +135,6 @@ function JustWinBodyView (props: Props) {
       }
     </div>
   )
-}
+})
 
-export default observer(JustWinBodyView)
+export default JustWinBodyView

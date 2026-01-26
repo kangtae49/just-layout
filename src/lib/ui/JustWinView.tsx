@@ -17,7 +17,7 @@ interface Props extends React.Attributes {
   getTabMenu?: GetTabMenuFn
 }
 
-function JustWinView ({layoutId, isFullScreenView, hideTitle, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) {
+const JustWinView = observer(({layoutId, isFullScreenView, hideTitle, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) => {
   const justLayoutStore = useJustLayoutStore(layoutId)
   const fullScreenHideTitle = justLayoutStore.fullScreenHideTitle;
 
@@ -49,6 +49,6 @@ function JustWinView ({layoutId, isFullScreenView, hideTitle, dndAccept, justBra
       />
     </div>
   )
-}
+})
 
-export default observer(JustWinView)
+export default JustWinView
