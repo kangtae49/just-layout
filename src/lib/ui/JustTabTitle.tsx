@@ -11,7 +11,6 @@ interface Props extends React.Attributes {
   justId: JustId
   layoutId: string
   justBranch: JustBranch
-  isFullScreenView: boolean
   winInfo: WinInfo
   menuProps: {
     state?: "opening" | "open" | "closing" | "closed"

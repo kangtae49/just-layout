@@ -110,7 +110,6 @@ const JustLayoutView =  observer(({layoutId, getWinInfo, getTabMenu, initialValu
         {justLayoutStore.fullScreenLayout === null &&
           <JustNodeView
             layoutId={layoutId}
-            isFullScreenView={false}
             hideTitle={justLayoutStore.layout?.hideTitle}
             dndAccept={justLayoutStore.layout?.dndAccept ?? []}
             node={justLayoutStore.layout}
@@ -122,7 +121,6 @@ const JustLayoutView =  observer(({layoutId, getWinInfo, getTabMenu, initialValu
         {justLayoutStore.fullScreenLayout !== null &&
           <JustNodeView
             layoutId={layoutFullScreenId}
-            isFullScreenView={true}
             hideTitle={justLayoutStore.layout?.hideTitle}
             dndAccept={justLayoutStore.layout?.dndAccept ?? []}
             node={justLayoutFullScreenStore.layout}

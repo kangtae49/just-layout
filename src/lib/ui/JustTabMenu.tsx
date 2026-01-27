@@ -9,9 +9,8 @@ interface Prop {
   layoutId: string
   justBranch: JustBranch
   justStack: JustStack
-  isFullScreenView: boolean
 }
-const JustTabMenu = observer(({layoutId, justBranch, isFullScreenView }: Prop) => {
+const JustTabMenu = observer(({layoutId, justBranch }: Prop) => {
   const justLayoutStore = useJustLayoutStore(layoutId);
   const closeAllTabs = () => {
     justLayoutStore.removeAllTabs({
@@ -20,7 +19,7 @@ const JustTabMenu = observer(({layoutId, justBranch, isFullScreenView }: Prop) =
   }
 
   const fullScreenWin = (hideTitle: boolean = false) => {
-    justLayoutStore.fullScreenWin(justBranch, isFullScreenView, hideTitle)
+    justLayoutStore.fullScreenWin(justBranch, layoutId, hideTitle)
   }
 
   return (
@@ -37,7 +36,7 @@ const JustTabMenu = observer(({layoutId, justBranch, isFullScreenView }: Prop) =
           <Icon icon={faExpand} />
         </div>
         <div className="just-title">
-          {isFullScreenView ? 'F11' : 'Full'}
+          {justLayoutStore.isFullScreenView(layoutId) ? 'F11' : 'Full'}
         </div>
         <div className="just-icon" />
       </MenuItem>

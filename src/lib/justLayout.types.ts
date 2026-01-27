@@ -83,7 +83,6 @@ export interface TabTitleProps {
   justId: JustId
   layoutId: string
   justBranch: JustBranch
-  isFullScreenView: boolean
   winInfo: WinInfo
   menuProps: {
     state?: "opening" | "open" | "closing" | "closed"
@@ -101,9 +100,9 @@ export interface JustDragItem {
 }
 
 export type GetWinInfoFn = (justId: JustId) => WinInfo;
-export type GetTabTitleFn = ({justId, layoutId, justBranch, isFullScreenView, winInfo}: TabTitleProps) => JSX.Element;
+export type GetTabTitleFn = ({justId, layoutId, justBranch, winInfo}: TabTitleProps) => JSX.Element;
 export type GetViewFn = (justId: JustId, layoutId: string) => JSX.Element;
 export type GetTabIconFn = (justId: JustId, layoutId: string) => JSX.Element;
 
-export type GetTabMenuFn = (layoutId: string, branch: JustBranch, justStack: JustStack, isFullScreenView: boolean) => JSX.Element;
+export type GetTabMenuFn = (layoutId: string, branch: JustBranch, justStack: JustStack) => JSX.Element;
 

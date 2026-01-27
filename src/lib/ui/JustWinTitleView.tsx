@@ -17,7 +17,6 @@ import JustTabMenu from "./JustTabMenu.tsx";
 
 interface Props extends React.Attributes {
   layoutId: string
-  isFullScreenView: boolean
   dndAccept: string[]
   justBranch: JustBranch
   justStack: JustStack
@@ -25,7 +24,7 @@ interface Props extends React.Attributes {
   getTabMenu?: GetTabMenuFn
 }
 
-const JustWinTitleView = observer(({layoutId, isFullScreenView, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) => {
+const JustWinTitleView = observer(({layoutId, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) => {
   const ref = useRef<HTMLDivElement | null>(null)
   const [rect, setRect] = useState<DOMRect | null>(null)
 
@@ -125,7 +124,6 @@ const JustWinTitleView = observer(({layoutId, isFullScreenView, dndAccept, justB
           <JustDraggableTitle
             key={[...justBranch, JustUtil.toString(justId)].join(",")}
             layoutId={layoutId}
-            isFullScreenView={isFullScreenView}
             dndAccept={dndAccept}
             rect={rect}
             justId={justId}
@@ -166,9 +164,9 @@ const JustWinTitleView = observer(({layoutId, isFullScreenView, dndAccept, justB
           </div>
         }>
           {getTabMenu ?
-            getTabMenu(layoutId, justBranch, justStack, isFullScreenView)
+            getTabMenu(layoutId, justBranch, justStack)
             :
-            <JustTabMenu layoutId={layoutId} justBranch={justBranch} justStack={justStack} isFullScreenView={isFullScreenView} />
+            <JustTabMenu layoutId={layoutId} justBranch={justBranch} justStack={justStack} />
             // <>
             //   <MenuItem className="just-menu-item" onClick={() => closeAllTabs(justBranch)}>
             //       <div className="just-icon" />

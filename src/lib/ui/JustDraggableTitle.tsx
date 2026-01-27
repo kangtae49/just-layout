@@ -13,7 +13,6 @@ import {JustUtil, useJustLayoutStore} from "@/lib";
 
 interface Props extends React.Attributes {
   layoutId: string
-  isFullScreenView: boolean
   dndAccept: string[]
   justBranch: JustBranch
   justId: JustId
@@ -25,8 +24,6 @@ interface Props extends React.Attributes {
 const JustDraggableTitle = observer((props: Props) => {
   const {
     layoutId,
-
-    isFullScreenView,
     dndAccept,
     winInfo, justBranch, justId, justStack,
     rect: parentRect
@@ -129,10 +126,10 @@ const JustDraggableTitle = observer((props: Props) => {
     >
       {
         winInfo.getTabTitle ?
-          winInfo.getTabTitle({justId, layoutId, justBranch, isFullScreenView, winInfo, menuProps, toggleMenu, anchorPoint}) :
+          winInfo.getTabTitle({justId, layoutId, justBranch, winInfo, menuProps, toggleMenu, anchorPoint}) :
           <JustTabTitle
             justId={justId} layoutId={layoutId} justBranch={justBranch}
-            isFullScreenView={isFullScreenView} winInfo={winInfo}
+            winInfo={winInfo}
             menuProps={menuProps} toggleMenu={toggleMenu} anchorPoint={anchorPoint} />
       }
     </div>

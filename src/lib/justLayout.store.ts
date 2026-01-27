@@ -434,15 +434,19 @@ export class JustLayoutStore {
     }
   }
 
-  fullScreenWin = (justBranch: JustBranch, isFullScreenView: boolean, hideTitle: boolean = false) => {
+  fullScreenWin = (justBranch: JustBranch, layoutId: string, hideTitle: boolean = false) => {
     // fullscreen
-    if (isFullScreenView) {  // justLayoutFullScreenStore
+    if (this.isFullScreenView(layoutId)) {  // justLayoutFullScreenStore
       this.setLayout(null)  // restore
     } else {  // justLayoutStore
       // fullscreen
       this.setFullScreenLayoutByBranch(justBranch)
       this.setFullScreenHideTitle(hideTitle)
     }
+  }
+
+  isFullScreenView = (layoutId: string) => {
+    return layoutId.endsWith("_FULLSCREEN")
   }
 
 

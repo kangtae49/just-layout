@@ -8,7 +8,6 @@ import React from "react";
 
 interface Props extends React.Attributes {
   layoutId: string
-  isFullScreenView: boolean
   hideTitle?: boolean
   dndAccept: string[]
   justBranch: JustBranch
@@ -17,7 +16,7 @@ interface Props extends React.Attributes {
   getTabMenu?: GetTabMenuFn
 }
 
-const JustWinView = observer(({layoutId, isFullScreenView, hideTitle, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) => {
+const JustWinView = observer(({layoutId, hideTitle, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) => {
   const justLayoutStore = useJustLayoutStore(layoutId)
   const fullScreenHideTitle = justLayoutStore.fullScreenHideTitle;
 
@@ -32,7 +31,6 @@ const JustWinView = observer(({layoutId, isFullScreenView, hideTitle, dndAccept,
       {(showTitle && !fullScreenHideTitle)  &&
         <JustWinTitleView
           layoutId={layoutId}
-          isFullScreenView={isFullScreenView}
           dndAccept={dndAccept}
           justBranch={justBranch}
           justStack={justStack}

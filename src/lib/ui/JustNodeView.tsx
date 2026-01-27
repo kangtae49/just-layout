@@ -10,7 +10,6 @@ import {observer} from "mobx-react-lite";
 
 interface Props extends React.Attributes {
   layoutId: string
-  isFullScreenView: boolean
   justBranch: JustBranch
   node: JustNode | null
   getWinInfo: GetWinInfoFn
@@ -19,7 +18,7 @@ interface Props extends React.Attributes {
   dndAccept: string[]
 }
 
-const JustNodeView = observer(({layoutId, isFullScreenView, hideTitle, dndAccept, node, justBranch, getWinInfo, getTabMenu}: Props) => {
+const JustNodeView = observer(({layoutId, hideTitle, dndAccept, node, justBranch, getWinInfo, getTabMenu}: Props) => {
   const refNode = useRef<HTMLDivElement | null>(null);
 
   const justLayoutStore = useJustLayoutStore(layoutId)
@@ -56,7 +55,6 @@ const JustNodeView = observer(({layoutId, isFullScreenView, hideTitle, dndAccept
         <JustWinView
           hideTitle={node.hideTitle ?? hideTitle}
           layoutId={layoutId}
-          isFullScreenView={isFullScreenView}
           dndAccept={node.dndAccept ?? dndAccept}
           justStack={node}
           justBranch={justBranch}
@@ -83,7 +81,6 @@ const JustNodeView = observer(({layoutId, isFullScreenView, hideTitle, dndAccept
           >
               <JustNodeView
                 layoutId={layoutId}
-                isFullScreenView={isFullScreenView}
                 hideTitle={node.hideTitle ?? hideTitle}
                 dndAccept={node.dndAccept ?? dndAccept}
                 node={node.first}
@@ -115,7 +112,6 @@ const JustNodeView = observer(({layoutId, isFullScreenView, hideTitle, dndAccept
           >
               <JustNodeView
                 layoutId={layoutId}
-                isFullScreenView={isFullScreenView}
                 hideTitle={node.hideTitle ?? hideTitle}
                 dndAccept={node.dndAccept ?? dndAccept}
                 node={node.second}
