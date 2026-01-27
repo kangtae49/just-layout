@@ -14,13 +14,9 @@ interface Prop {
 const TabMenu = observer(({layoutId, justBranch, isFullScreenView }: Prop) => {
   const justLayoutStore = useJustLayoutStore(layoutId);
   const closeAllTabs = () => {
-    console.log('closeAllTabs justBranch', justBranch)
-    // const winIds: JustId[] = justLayoutStore.getWinIdsByBranch({branch});
-
     justLayoutStore.removeAllTabs({
       branch: justBranch
     })
-
   }
 
   const fullScreenWin = (hideTitle: boolean = false) => {

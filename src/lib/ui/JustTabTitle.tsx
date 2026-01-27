@@ -22,7 +22,6 @@ interface Props extends React.Attributes {
 }
 
 const JustTabTitle = observer(({layoutId, justId, winInfo, menuProps, toggleMenu, anchorPoint}: Props) => {
-  console.log('TabTitle justId', justId)
   const justLayoutStore = useJustLayoutStore(layoutId);
   const tabTitleTooltip = justLayoutStore.getTabTitleTooltip(justId)
 

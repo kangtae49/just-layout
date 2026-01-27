@@ -423,14 +423,12 @@ export class JustLayoutStore {
     const viewId = justId.viewId;
     const winIds: JustId[] = this.getWinIds({viewId});
     if (winIds.length === 0) {
-      console.log('openWinMenu1', winIds, justId)
       this.openWinByNodeName({justId, nodeName})
     } else {
       const newJustId = winIds
         .toSorted((a, b) => (a.dupId ?? '') <= (b.dupId ?? '') ? -1: 1)
         .at(-1)
       if (newJustId) {
-        console.log('openWinMenu2', winIds, newJustId)
         this.openWinByNodeName({justId: newJustId, nodeName})
       }
     }

@@ -44,7 +44,6 @@ const TabTitle = observer(({layoutId, justId, justBranch, isFullScreenView, winI
     })
   }
   const fullScreenWin = (justId: JustId, hideTitle: boolean = false) => {
-    console.log('fullScreenWin isFullScreenView', isFullScreenView)
     justLayoutStore.activeWin({justId})
     justLayoutStore.fullScreenWin(justBranch, isFullScreenView, hideTitle)
   }

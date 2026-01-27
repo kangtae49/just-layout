@@ -52,10 +52,8 @@ const JustLayoutView =  observer(({layoutId, getWinInfo, getTabMenu, initialValu
 
     const handleKeyDown = async (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        console.log('esc')
         justLayoutStore.setFullScreenLayoutByBranch(null)
       } else if (e.key === 'F11') {
-        console.log('F11')
         if (justLayoutStore.fullScreenLayout !== null) {
           justLayoutStore.setFullScreenLayoutByBranch(null)
         }
@@ -93,7 +91,6 @@ const JustLayoutView =  observer(({layoutId, getWinInfo, getTabMenu, initialValu
 
 
   useEffect(() => {
-    console.log('useEffect justLayoutStore.fullScreenLayout', justLayoutStore.fullScreenLayout)
     justLayoutFullScreenStore.setLayout(justLayoutStore.fullScreenLayout)
     if (justLayoutStore.lastActiveId) {
       justLayoutFullScreenStore.activeWin({justId: justLayoutStore.lastActiveId})
