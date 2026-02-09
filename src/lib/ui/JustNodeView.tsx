@@ -43,7 +43,6 @@ const JustNodeView = observer(({layoutId, hideTitle, dndAccept, node, justBranch
     }
     return {}
   }
-
   return (
     <div ref={refNode}
       className={classNames(

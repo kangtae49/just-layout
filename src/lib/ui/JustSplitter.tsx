@@ -13,14 +13,14 @@ import {observer} from "mobx-react-lite";
 const RESIZE_THROTTLE_MS = 1000 / 30; // 30 fps
 
 
-export type SplitSize = SplitSizePercentage | SplitSizePiexels;
+export type SplitSize = SplitSizePercentage | SplitSizePixels;
 
 export interface SplitSizePercentage {
   type: JustSplitType,
   size: number,
 }
 
-export interface SplitSizePiexels {
+export interface SplitSizePixels {
   type: JustSplitType,
   primary: JustSplitDirection
   size: number

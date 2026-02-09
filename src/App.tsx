@@ -1,13 +1,23 @@
 import './App.css'
 import "./lib/ui/JustLayoutView.css"
-import {type JustId, JustLayoutView, type JustNode, JustUtil, type TabTitleProps} from "./lib";
+import {
+  type JustBranch,
+  type JustId,
+  JustLayoutView,
+  type JustNode,
+  type JustStack,
+  JustUtil,
+  type TabTitleProps
+} from "./lib";
 import type {WinInfo} from "./lib";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faCircleQuestion} from "@fortawesome/free-solid-svg-icons";
 import {useJustLayoutStore} from "./lib";
-import {useEffect} from "react";
+import {type JSX, useEffect} from "react";
 import {toJS} from "mobx";
 import TabTitle from "./TabTitle";
+import {observer} from "mobx-react-lite";
+import TabMenu from "@/TabMenu.tsx";
 
 
 export type ViewId = "about"
@@ -65,17 +75,18 @@ const getWinInfo = (justId: JustId): WinInfo => {
   return viewMap[viewId]
 }
 
-// const getTabMenu = (layoutId: string, branch: JustBranch, justStack: JustStack, isFullScreenView: boolean): JSX.Element => {
-//   return (
-//     <TabMenu layoutId={layoutId} justBranch={branch} justStack={justStack} isFullScreenView={isFullScreenView} />
-//   )
-// }
+const getTabMenu = (layoutId: string, branch: JustBranch, justStack: JustStack): JSX.Element => {
+  return (
+    <TabMenu layoutId={layoutId} justBranch={branch} justStack={justStack} />
+  )
+}
 
-function App() {
+const App = observer(() => {
   const layoutId = "LAYOUT_ID"
+  const layoutFullScreenId = `${layoutId}_FULLSCREEN`
 
-  // const layoutFullScreenId = `${layoutId}_FULLSCREEN`
   const justLayoutStore = useJustLayoutStore(layoutId)
+  const justLayoutFullScreenStore = useJustLayoutStore(layoutFullScreenId)
 
 
   const openWin = () => {
@@ -85,6 +96,7 @@ function App() {
   }
 
   useEffect(() => {
+    justLayoutStore.setLayout(initialValue)
     justLayoutStore.setTabTitle(aboutId2, "About !!!")
     justLayoutStore.setTabTitleTooltip(aboutId2, "About Tooltip !!!")
     const ids = justLayoutStore.queryWinIdsByViewId("about")
@@ -119,33 +131,52 @@ function App() {
     console.log('xx', xx)
   }, [])
 
-  // const justLayoutFullScreenStore = useJustLayoutStore(layoutFullScreenId)
-  // useEffect(() => {
-  //   console.log('useEffect justLayoutFullScreenStore.layout', justLayoutFullScreenStore.layout)
-  //   const isFull = justLayoutFullScreenStore.layout !== null
-  //   console.log('isFull', isFull)
-  //   if (!isFull) {
-  //     justLayoutStore.setFullScreenLayoutByBranch(null)
-  //     justLayoutStore.setFullScreenHideTitle(false)
-  //   }
-  //   const changeScreen = async (isFull: boolean) => {
-  //     const isFullScreen = await window.api.isFullScreen()
-  //     if (isFullScreen !== isFull) {
-  //       await window.api.setFullScreen(isFull)
-  //     }
-  //
-  //     const isMaximized = await window.api.isMaximized();
-  //     if (isMaximized !== isFull) {
-  //       if (isFull) {
-  //         window.api.maximize()
-  //       } else {
-  //         window.api.unmaximize()
-  //       }
-  //     }
-  //   }
-  //   changeScreen(isFull)
-  //
-  // }, [justLayoutFullScreenStore.layout])
+
+  useEffect(() => {
+    // const removeFullScreen = window.api.onChangeFullScreen((_event, _flag) => {
+    // })
+    // const removeMaximize = window.api.onChangeMaximize((_event, _flag) => {
+    // })
+
+    const handleFullScreenChange = () => {
+    }
+
+    const handleKeyDown = async (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        justLayoutFullScreenStore.setLayout(null)
+      }
+      // else if (e.key === 'F11') {
+      // }
+      if (e.altKey) {
+        if (e.key === 'ArrowRight') {
+          if (justLayoutFullScreenStore.layout !== null) {
+            justLayoutFullScreenStore.activeNextWin()
+          } else {
+            justLayoutStore.activeNextWin()
+          }
+        } else if (e.key === 'ArrowLeft') {
+          if (justLayoutFullScreenStore.layout !== null) {
+            justLayoutFullScreenStore.activePrevWin()
+          } else {
+            justLayoutStore.activePrevWin()
+          }
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+
+    return () => {
+      // removeFullScreen()
+      // removeMaximize()
+      window.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+    }
+  }, [])
+
+  console.log('justLayoutFullScreenStore.layout', justLayoutFullScreenStore.layout)
   return (
 
 
@@ -153,15 +184,25 @@ function App() {
         <div onClick={openWin}>
           xx
         </div>
-        <JustLayoutView
-          layoutId={layoutId}
-          initialValue={initialValue}
-          getWinInfo={getWinInfo}
-          // getTabMenu={getTabMenu}
-        />
+        {(justLayoutFullScreenStore.layout === null) &&
+          <JustLayoutView
+            layoutId={layoutId}
+            // initialValue={initialValue}
+            getWinInfo={getWinInfo}
+            getTabMenu={getTabMenu}
+          />
+        }
+        {justLayoutFullScreenStore.layout !== null &&
+            <JustLayoutView
+                layoutId={layoutFullScreenId}
+                getWinInfo={getWinInfo}
+                getTabMenu={getTabMenu}
+                // initialValue={null}
+            />
+        }
       </div>
     // </Provider>
   )
-}
+})
 
 export default App

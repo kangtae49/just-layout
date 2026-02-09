@@ -18,7 +18,7 @@ interface Props extends React.Attributes {
 
 const JustWinView = observer(({layoutId, hideTitle, dndAccept, justBranch, justStack, getWinInfo, getTabMenu}: Props) => {
   const justLayoutStore = useJustLayoutStore(layoutId)
-  const fullScreenHideTitle = justLayoutStore.fullScreenHideTitle;
+  const hideTitleOfStore = justLayoutStore.hideTitle;
 
   const showTitle = hideTitle !== true
   const onFocus = () => {
@@ -28,7 +28,7 @@ const JustWinView = observer(({layoutId, hideTitle, dndAccept, justBranch, justS
   }
   return (
     <div className="just-win" onFocusCapture={onFocus} tabIndex={1}>
-      {(showTitle && !fullScreenHideTitle)  &&
+      {(showTitle && !hideTitleOfStore)  &&
         <JustWinTitleView
           layoutId={layoutId}
           dndAccept={dndAccept}

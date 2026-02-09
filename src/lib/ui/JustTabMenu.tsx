@@ -1,7 +1,5 @@
 import {observer} from "mobx-react-lite";
 import {MenuItem} from "@szhsin/react-menu";
-import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import {faExpand} from "@fortawesome/free-solid-svg-icons";
 import type {JustBranch, JustStack} from "@/lib";
 import {useJustLayoutStore} from "@/lib";
 
@@ -18,25 +16,12 @@ const JustTabMenu = observer(({layoutId, justBranch }: Prop) => {
     })
   }
 
-  const fullScreenWin = (hideTitle: boolean = false) => {
-    justLayoutStore.fullScreenWin(justBranch, layoutId, hideTitle)
-  }
-
   return (
     <>
       <MenuItem className="just-menu-item" onClick={() => closeAllTabs()}>
         <div className="just-icon" />
         <div className="just-title">
           Close All
-        </div>
-        <div className="just-icon" />
-      </MenuItem>
-      <MenuItem className="just-menu-item" onClick={() => fullScreenWin(true)}>
-        <div className="just-icon">
-          <Icon icon={faExpand} />
-        </div>
-        <div className="just-title">
-          {justLayoutStore.isFullScreenView(layoutId) ? 'F11' : 'Full'}
         </div>
         <div className="just-icon" />
       </MenuItem>

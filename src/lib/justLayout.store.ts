@@ -110,8 +110,7 @@ export class JustLayoutStore {
   layout: JustNode | null = null
   lastActiveId: JustId | null = null
   lastActiveTm: number = new Date().getTime()
-  fullScreenLayout: JustNode | null = null
-  fullScreenHideTitle: boolean = false
+  hideTitle: boolean = false
   tabTitleMap: Map<string, string> = new Map()
   tabTitleTooltipMap: Map<string, string> = new Map()
 
@@ -146,20 +145,9 @@ export class JustLayoutStore {
     return this.tabTitleTooltipMap.get(JustUtil.toString(justId))
   }
 
-  // setFullScreenLayout = (payload: JustNode | null) => {
-  //   this.fullScreenLayout = payload
-  // }
-  setFullScreenLayoutByBranch = (payload: JustBranch | null) => {
-    if (payload === null) {
-      this.fullScreenLayout = null
-    } else {
-      this.fullScreenLayout = this.service.getNodeAtBranch(this.layout, payload)
-    }
-  }
-  // setFullScreen = (flag: boolean) => { this.isFullScreen = flag }
-  // setMaximize = (flag: boolean) => { this.isMaximize = flag }
 
-  setFullScreenHideTitle = (flag: boolean) => { this.fullScreenHideTitle = flag }
+
+  setHideTitle = (flag: boolean) => { this.hideTitle = flag }
 
   addTab = (payload: JustPayloadAddTab) => {
     const branch = this.service.getTabBranch(this.layout, [])
@@ -434,20 +422,6 @@ export class JustLayoutStore {
     }
   }
 
-  fullScreenWin = (justBranch: JustBranch, layoutId: string, hideTitle: boolean = false) => {
-    // fullscreen
-    if (this.isFullScreenView(layoutId)) {  // justLayoutFullScreenStore
-      this.setLayout(null)  // restore
-    } else {  // justLayoutStore
-      // fullscreen
-      this.setFullScreenLayoutByBranch(justBranch)
-      this.setFullScreenHideTitle(hideTitle)
-    }
-  }
-
-  isFullScreenView = (layoutId: string) => {
-    return layoutId.endsWith("_FULLSCREEN")
-  }
 
 
 }
