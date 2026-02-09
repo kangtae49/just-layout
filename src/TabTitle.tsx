@@ -22,9 +22,9 @@ interface Props extends Attributes {
 }
 
 const TabTitle = observer(({layoutId, justId, justBranch, winInfo, menuProps, toggleMenu, anchorPoint}: Props) => {
-  const layoutFullScreenId = `${layoutId}_FULLSCREEN`
+  const layoutFullScreenId = 'LAYOUT_ID_FULLSCREEN'
   const justLayoutStore = useJustLayoutStore(layoutId);
-  const justFullScreenLayoutStore = useJustLayoutStore(layoutFullScreenId);
+  const justLayoutFullScreenStore = useJustLayoutStore(layoutFullScreenId);
 
   const tabTitleTooltip = justLayoutStore.getTabTitleTooltip(justId)
 
@@ -47,12 +47,12 @@ const TabTitle = observer(({layoutId, justId, justBranch, winInfo, menuProps, to
   }
   const fullScreenWin = (justId: JustId, hideTitle: boolean = false) => {
     justLayoutStore.activeWin({justId})
-    if (justFullScreenLayoutStore.layout === null) {
+    if (justLayoutFullScreenStore.layout === null) {
       const justNode = justLayoutStore.getNodeAtBranch({branch: justBranch})
       console.log('fullScreenWin set', justNode)
 
-      justFullScreenLayoutStore.setLayout(justNode)
-      justFullScreenLayoutStore.setHideTitle(hideTitle)
+      justLayoutFullScreenStore.setLayout(justNode)
+      justLayoutFullScreenStore.setHideTitle(hideTitle)
     }
   }
 
@@ -102,7 +102,7 @@ const TabTitle = observer(({layoutId, justId, justBranch, winInfo, menuProps, to
                 <Icon icon={faExpand} />
             </div>
             <div className="just-title">
-              {justFullScreenLayoutStore.layout !== null ? 'F11' : 'Full'}
+              {justLayoutFullScreenStore.layout !== null ? 'F11' : 'Full'}
             </div>
             <div className="just-icon" />
         </MenuItem>

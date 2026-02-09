@@ -82,8 +82,8 @@ const getTabMenu = (layoutId: string, branch: JustBranch, justStack: JustStack):
 }
 
 const App = observer(() => {
-  const layoutId = "LAYOUT_ID"
-  const layoutFullScreenId = `${layoutId}_FULLSCREEN`
+  const layoutId = 'LAYOUT_ID'
+  const layoutFullScreenId = 'LAYOUT_ID_FULLSCREEN'
 
   const justLayoutStore = useJustLayoutStore(layoutId)
   const justLayoutFullScreenStore = useJustLayoutStore(layoutFullScreenId)

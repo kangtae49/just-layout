@@ -11,9 +11,9 @@ interface Prop {
   justStack: JustStack
 }
 const TabMenu = observer(({layoutId, justBranch }: Prop) => {
-  const layoutFullScreenId = `${layoutId}_FULLSCREEN`
+  const layoutFullScreenId = 'LAYOUT_ID_FULLSCREEN'
   const justLayoutStore = useJustLayoutStore(layoutId);
-  const justFullScreenLayoutStore = useJustLayoutStore(layoutFullScreenId);
+  const justLayoutFullScreenStore = useJustLayoutStore(layoutFullScreenId);
   const closeAllTabs = () => {
     justLayoutStore.removeAllTabs({
       branch: justBranch
@@ -21,10 +21,10 @@ const TabMenu = observer(({layoutId, justBranch }: Prop) => {
   }
 
   const fullScreenWin = (hideTitle: boolean = false) => {
-    if (justFullScreenLayoutStore.layout === null) {
+    if (justLayoutFullScreenStore.layout === null) {
       const justNode = justLayoutStore.getNodeAtBranch({branch: justBranch})
-      justFullScreenLayoutStore.setLayout(justNode)
-      justFullScreenLayoutStore.setHideTitle(hideTitle)
+      justLayoutFullScreenStore.setLayout(justNode)
+      justLayoutFullScreenStore.setHideTitle(hideTitle)
     }
   }
 
@@ -42,7 +42,7 @@ const TabMenu = observer(({layoutId, justBranch }: Prop) => {
           <Icon icon={faExpand} />
         </div>
         <div className="just-title">
-          {justFullScreenLayoutStore.layout !== null ? 'F11' : 'Full'}
+          {justLayoutFullScreenStore.layout !== null ? 'F11' : 'Full'}
         </div>
         <div className="just-icon" />
       </MenuItem>
