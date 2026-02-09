@@ -167,47 +167,7 @@ const JustWinTitleView = observer(({layoutId, dndAccept, justBranch, justStack, 
             getTabMenu(layoutId, justBranch, justStack)
             :
             <JustTabMenu layoutId={layoutId} justBranch={justBranch} justStack={justStack} />
-            // <>
-            //   <MenuItem className="just-menu-item" onClick={() => closeAllTabs(justBranch)}>
-            //       <div className="just-icon" />
-            //       <div className="just-title">
-            //           Close All
-            //       </div>
-            //       <div className="just-icon" />
-            //   </MenuItem>
-            //   <MenuItem className="just-menu-item" onClick={() => fullScreenWin(true)}>
-            //       <div className="just-icon">
-            //           <Icon icon={faExpand} />
-            //       </div>
-            //       <div className="just-title">
-            //         {isFullScreenView ? 'F11' : 'Full'}
-            //       </div>
-            //       <div className="just-icon" />
-            //   </MenuItem>
-            // </>
           }
-          {/*{ !justLayoutStore.fullScreenLayout &&*/}
-          {/*  <MenuItem className="just-menu-item" onClick={() => fullScreenWin(false)}>*/}
-          {/*    <div className="just-icon">*/}
-          {/*      <Icon icon={faExpand} />*/}
-          {/*    </div>*/}
-          {/*    <div className="just-title">*/}
-          {/*      1*/}
-          {/*    </div>*/}
-          {/*    <div className="just-icon" />*/}
-          {/*  </MenuItem>*/}
-          {/*}*/}
-          {/*{ (!justLayoutStore.isFullScreen && isParentBranch()) &&*/}
-          {/*  <MenuItem className="just-menu-item" onClick={() => fullScreenBranch(justBranch.slice(0, -1))}>*/}
-          {/*    <div className="just-icon">*/}
-          {/*        <Icon icon={faExpand} />*/}
-          {/*    </div>*/}
-          {/*    <div className="just-title">*/}
-          {/*        2*/}
-          {/*    </div>*/}
-          {/*    <div className="just-icon" />*/}
-          {/*  </MenuItem>*/}
-          {/*}*/}
         </Menu>
       </div>
     </div>
